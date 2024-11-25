@@ -53,9 +53,13 @@ void printBoard(Square board[]) {
         for(int subrow = 0; subrow < 3; subrow++) {
             // Cetak garis horizontal untuk semua petak dalam baris
             for(int col = 0; col < 10; col++) {
-                printf("+---+---+---+");
+                if(subrow == 0) {
+                    printf("+---+---+---+");
+                }
             }
-            printf("\n");
+            if(subrow == 0) {
+                printf("\n");
+            }
             
             // Cetak isi petak
             for(int col = 0; col < 10; col++) {
@@ -69,23 +73,23 @@ void printBoard(Square board[]) {
                 if(subrow == 0) {
                     // Baris pertama: Nomor petak
                     if (board[index].number == 100) {
-                        printf("|%2d|   |   |", board[index].number);
+                        printf("|%2d        |", board[index].number);
                     }
                     else {
-                        printf("| %2d|   |   |", board[index].number);
+                        printf("|%2d         |", board[index].number);
                     }
                 }
                 else if(subrow == 1) {
                     // Baris kedua: Event dan Player 1,2
                     char p1 = board[index].players[0] ? '1' : ' ';
                     char p2 = board[index].players[1] ? '2' : ' ';
-                    printf("|%c%c |   | %c |", p1, p2, board[index].event);
+                    printf("|%c%c       %c |", p1, p2, board[index].event);
                 }
                 else {
                     // Baris ketiga: Player 3,4 dan Event Connect
                     char p3 = board[index].players[2] ? '3' : ' ';
                     char p4 = board[index].players[3] ? '4' : ' ';
-                    printf("|%c%c |   | %c |", p3, p4, board[index].eventConnect);
+                    printf("|%c%c       %c |", p3, p4, board[index].eventConnect);
                 }
             }
             printf("\n");
