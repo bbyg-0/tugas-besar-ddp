@@ -61,14 +61,19 @@ void printBoard(Square board[]) {
             for(int col = 0; col < 10; col++) {
                 int index;
                 if(row % 2 == 0) {
-                    index = row * 10 + (9 - col);  // Reverse untuk baris genap
+                    index = row * 10 + col;    // Reverse untuk baris genap
                 } else {
-                    index = row * 10 + col;        // Normal untuk baris ganjil
+                    index = row * 10 + (9 - col);     // Normal untuk baris ganjil
                 }
                 
                 if(subrow == 0) {
                     // Baris pertama: Nomor petak
-                    printf("| %2d|   |   |", board[index].number);
+                    if (board[index].number == 100) {
+                        printf("|%2d|   |   |", board[index].number);
+                    }
+                    else {
+                        printf("| %2d|   |   |", board[index].number);
+                    }
                 }
                 else if(subrow == 1) {
                     // Baris kedua: Event dan Player 1,2
